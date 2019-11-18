@@ -20,3 +20,43 @@
 .App-link {
   color: #09d3ac;
 }
+
+
+li {
+  list-style: none;
+}
+
+ul {
+  padding: 0;
+}
+
+.articles-list{
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.article-card{
+  box-sizing: border-box;
+  background: #b1b9e7;
+  margin: 2.5%;
+  padding: 2.5%;
+}
+
+@media only screen and (max-width: 600px) {
+  .articles-list{
+    display: flex;
+    flex-direction: column;
+  }
+}
+/* .sidenav{
+  grid-column: 1/2;
+  height: 100%;
+  width: 25%;
+  position: fixed;
+  background-color: lightblue; 
+  overflow-x: hidden; 
+  padding-top: 20px;
+} */
+
