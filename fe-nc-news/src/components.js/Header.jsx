@@ -5,7 +5,7 @@ import Toggle from './Toggle'
 
 const Header = () => {
   return (
-    <div>
+    <header>
       <h1>northcoders news</h1>
       <nav>
         <Link to="/">Home</Link>
@@ -13,7 +13,7 @@ const Header = () => {
           <Topics />
         </Toggle>
       </nav>
-    </div>
+    </header>
   );
 };
 

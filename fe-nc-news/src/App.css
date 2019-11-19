@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  display: grid;
+  grid-template-rows: 100px, auto;
 }
 
 .App-logo {
@@ -21,6 +23,13 @@
   color: #09d3ac;
 }
 
+header{
+  grid-row: 1/2;
+  /* position: fixed; */
+  padding: 10px 16px;
+  width: 100%;
+  background-color: white;
+}
 
 li {
   list-style: none;

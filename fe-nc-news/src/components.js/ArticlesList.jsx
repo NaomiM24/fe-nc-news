@@ -25,7 +25,7 @@ class ArticlesList extends Component {
             Sort By:
             <select onChange={this.handleSelectChange}>
             <option value="created_at">Date</option>
-            <option value="vote">Votes</option>
+            <option value="votes">Votes</option>
             <option value="comment_count">Comment Count</option>
             </select>
           </label>
@@ -38,13 +38,10 @@ class ArticlesList extends Component {
         <ul id = "article-list">
           {this.state.articles.map(article => {
             return (
-              <Link key={article.article_id} to={`/articles/${article.article_id}`}> 
+              // <Link key={article.article_id} to={`/articles/${article.article_id}`}> 
                 <ArticleCard article={article} />
-              </Link>
-              
-            )
-             
-            
+              /* </Link> */            
+            )       
           })}
         </ul>
       </div>

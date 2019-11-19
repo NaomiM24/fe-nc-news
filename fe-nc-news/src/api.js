@@ -28,9 +28,13 @@ export const getComments = (article_id, sort_by, order) => {
 
 export const updateCommentVotes = (comment_id, number) => {
   return axios.patch(`${baseURL}/comments/${comment_id}`, {
-    
       inc_votes: number
+  })
+}
 
+export const updateArticleVotes = (article_id, number) => {
+  return axios.patch(`${baseURL}/articles/${article_id}`, {
+      inc_votes: number
   })
 }
 
