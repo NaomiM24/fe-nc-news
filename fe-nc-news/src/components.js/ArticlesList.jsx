@@ -31,8 +31,8 @@ class ArticlesList extends Component {
           </label>
           <label>
             Order By:
-            Ascending<input type="radio" name="order" value="asc" defaultChecked/>
-            Descending<input type="radio" name="order" value="desc"/>
+            Ascending<input type="radio" name="order" value="asc" defaultChecked onClick={this.handleClick}/>
+            Descending<input type="radio" name="order" value="desc" onClick={this.handleClick}/>
           </label>
         </form>
         <ul id = "article-list">
@@ -57,24 +57,31 @@ class ArticlesList extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(this.props.sort_by)
-    if (prevProps.topicName !== this.props.topicName ||prevProps.authorName !== this.props.authorName ||prevState.sort_by !== this.state.sort_by)
+    //console.log(this.state.order)
+    if (prevProps.topicName !== this.props.topicName ||prevProps.authorName !== this.props.authorName /*||prevState.sort_by !== this.state.sort_by ||prevState.order !== this.state.order*/)
     this.fetchArticles()
   }
 
   fetchArticles() {
-    const {topicName, authorName, sort_by} = this.props
-    //const {sort_by} = this.state
-    api.getAllArticles(topicName, authorName, sort_by)
+    const {topicName, authorName} = this.props
+    // const {sort_by, order} = this.state
+    api.getAllArticles(topicName, authorName, /*sort_by,*/
+      /*order*/)
     .then(({data: {articles}}) => {
-      this.setState({articles, isLoading: false, topic: topicName, author: authorName, sort_by})
+      this.setState({articles, isLoading: false, topic: topicName, author: authorName, /*sort_by,*/
+        /*order*/})
     })
   }
 
-  handleSelectChange = (event) => {
-    const sort_by = event.target.value;
-    this.setState({sort_by})
-  }
+  // handleSelectChange = (event) => {
+  //   const sort_by = event.target.value;
+  //   this.setState({sort_by})
+  // }
+
+  // handleClick = (event) => {
+  //   const order = event.target.value;
+  //   this.setState({order})
+  // }
 }
 
 export default ArticlesList;

@@ -60,3 +60,16 @@ ul {
   padding-top: 20px;
 } */
 
+.comment-list{
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.comment-card{
+  box-sizing: border-box;
+  background: #e0e0d8;
+  margin: 2.5%;
+  padding: 2.5%;
+}
