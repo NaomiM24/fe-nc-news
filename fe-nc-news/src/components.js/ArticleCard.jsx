@@ -3,7 +3,8 @@ import { Link  } from '@reach/router'
 
 const ArticleCard = ({article}) => {
   const myLink = `/authors/${article.author}`
-  console.log(article.votes)
+  //console.log(article.votes)
+  //console.log(new Date(article.created_at))
   return (
     
     <div className="article-card">

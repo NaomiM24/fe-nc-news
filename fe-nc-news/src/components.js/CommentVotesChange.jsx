@@ -8,9 +8,10 @@ class CommentVotesChange extends Component {
   }
 
   render() {
-
+    console.log('props', this.props)
     return (
       <div>
+         votes: {this.props.comment_vote + this.state.vote}
         <ul>
           <li className="vote">
             <label className="like" onClick={this.handleLike}>
@@ -41,8 +42,7 @@ class CommentVotesChange extends Component {
     if (prevState.vote !== this.state.vote){
       const {comment_id} = this.props
       const {vote} = this.state
-      api.updateCommentVotes(comment_id, vote).then(({data: {comment}}) => console.log(comment)
-      )
+      api.updateCommentVotes(comment_id, vote)        
     }
   }
 }

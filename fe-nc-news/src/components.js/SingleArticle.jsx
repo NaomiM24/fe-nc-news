@@ -3,7 +3,6 @@ import * as api from '../api.js'
 import Toggle from './Toggle.jsx';
 import Comments from './Comments.jsx';
 import { Link  } from '@reach/router'
-import Topics from './Topics.jsx';
 
 class SingleArticle extends Component {
   state = {

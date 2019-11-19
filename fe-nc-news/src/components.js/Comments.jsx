@@ -6,6 +6,8 @@ class Comments extends Component {
   state = {
     comments: [],
     isLoading: true,
+    order: null,
+    sort_by: null
   }
   render() {
   
@@ -14,7 +16,7 @@ class Comments extends Component {
       return <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="loading..."/>
     } 
     return (
-      <>
+      <article className="article-comments">
       <form>
           <label>
             Sort By:
@@ -30,7 +32,7 @@ class Comments extends Component {
             Descending<input type="radio" name="order" value="desc" onClick={this.handleClick}/>
           </label>
         </form>
-      <main>
+      <section>
         <ul id = "comment-list" >
           {this.state.comments.map(comment => {
             return (
@@ -38,18 +40,35 @@ class Comments extends Component {
             )
           })}
         </ul>
-      </main>
-      </>
+      </section>
+      </article>
     );
   }
   componentDidMount() {
     this.fetchComments()
   }
 
+  componentDidUpdate(prevProps, prevState) {
+  
+    if (prevState.sort_by !== this.state.sort_by ||prevState.order !== this.state.order)
+    this.fetchComments()
+  }
+
   fetchComments() {
     const {article_id} = this.props
-    api.getComments(article_id).then(({data: {comments}}) => this.setState({comments, isLoading: false})
-    )}
+    const {sort_by, order} = this.state
+    api.getComments(article_id, sort_by, order).then(({data: {comments}}) => this.setState({comments, isLoading: false})
+  )}
+
+  handleSelectChange = (event) => {
+    const sort_by = event.target.value;
+    this.setState({sort_by})
+  }
+  
+  handleClick = (event) => {
+    const order = event.target.value;
+    this.setState({order})
+  }
 }
 
 export default Comments;

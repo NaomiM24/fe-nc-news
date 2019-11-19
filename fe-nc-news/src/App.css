@@ -39,6 +39,7 @@ ul {
 
 .article-card{
   box-sizing: border-box;
+  border-radius: 25px;
   background: #b1b9e7;
   margin: 2.5%;
   padding: 2.5%;
@@ -60,6 +61,10 @@ ul {
   padding-top: 20px;
 } */
 
+.article-comments{
+  background-color: cadetblue;
+}
+
 .comment-list{
   display: flex;
   justify-content: center;
@@ -68,16 +73,34 @@ ul {
 }
 
 .comment-card{
+  display: grid;
+  border-radius: 25px;
+  border-style: double;
+  grid-template-rows: 1fr 0.5fr; 
+  grid-template-columns: 1fr 2fr;
   box-sizing: border-box;
-  background: #e0e0d8;
+  background-color: white;
   margin: 2.5%;
   padding: 2.5%;
 }
+.comment-user{
+  grid-column: 1/2;
+}
+.comment-body{
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+.comment-votes{
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
 
-
+.comment-published-at{
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
 .vote{
   display: inline-block;
-  
 }
 
 .vote input {
@@ -99,4 +122,8 @@ input:checked + label {
 
 .dislike:hover {
   color:red;
+}
+
+.avatar{
+  height: 50px;
 }
