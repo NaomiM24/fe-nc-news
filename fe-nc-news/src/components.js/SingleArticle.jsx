@@ -12,7 +12,6 @@ class SingleArticle extends Component {
   };
   render() {
     const article = this.state.article
-    //console.log(article)
 
     if (this.state.isLoading){
       return <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="loading..."/>

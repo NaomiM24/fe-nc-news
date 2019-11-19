@@ -8,11 +8,12 @@ class ArticlesList extends Component {
     articles: [],
     author: '',
     topic: '',
-    sort_by: '',
-    order: '',
+    sort_by: null,
+    order: null,
     isLoading: true,
   }
   render() {
+    //console.log(this.state.articles)
     if (this.state.isLoading){
       return <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="loading..."/>
     } 
@@ -24,9 +25,8 @@ class ArticlesList extends Component {
             Sort By:
             <select onChange={this.handleSelectChange}>
             <option value="created_at">Date</option>
-            <option value="author">Author</option>
+            <option value="vote">Votes</option>
             <option value="comment_count">Comment Count</option>
-            <option value="artcile_id">Article ID</option>
             </select>
           </label>
           <label>
@@ -58,30 +58,30 @@ class ArticlesList extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     //console.log(this.state.order)
-    if (prevProps.topicName !== this.props.topicName ||prevProps.authorName !== this.props.authorName /*||prevState.sort_by !== this.state.sort_by ||prevState.order !== this.state.order*/)
+    if (prevProps.topicName !== this.props.topicName ||prevProps.authorName !== this.props.authorName ||prevState.sort_by !== this.state.sort_by ||prevState.order !== this.state.order)
     this.fetchArticles()
   }
 
   fetchArticles() {
     const {topicName, authorName} = this.props
-    // const {sort_by, order} = this.state
-    api.getAllArticles(topicName, authorName, /*sort_by,*/
-      /*order*/)
+    const {sort_by, order} = this.state
+    api.getAllArticles(topicName, authorName, sort_by,
+      order)
     .then(({data: {articles}}) => {
-      this.setState({articles, isLoading: false, topic: topicName, author: authorName, /*sort_by,*/
-        /*order*/})
+      this.setState({articles, isLoading: false, topic: topicName, author: authorName, sort_by,
+        order})
     })
   }
 
-  // handleSelectChange = (event) => {
-  //   const sort_by = event.target.value;
-  //   this.setState({sort_by})
-  // }
+  handleSelectChange = (event) => {
+    const sort_by = event.target.value;
+    this.setState({sort_by})
+  }
 
-  // handleClick = (event) => {
-  //   const order = event.target.value;
-  //   this.setState({order})
-  // }
+  handleClick = (event) => {
+    const order = event.target.value;
+    this.setState({order})
+  }
 }
 
 export default ArticlesList;

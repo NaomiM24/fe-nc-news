@@ -73,3 +73,30 @@ ul {
   margin: 2.5%;
   padding: 2.5%;
 }
+
+
+.vote{
+  display: inline-block;
+  
+}
+
+.vote input {
+  visibility:hidden;
+}
+.vote label {
+  cursor: pointer;
+  border-style: outset;
+  border-radius: 25px;
+  text-align: center;
+}
+input:checked + label {
+  background: red;
+}
+
+.like:hover {
+  color:green;
+}
+
+.dislike:hover {
+  color:red;
+}

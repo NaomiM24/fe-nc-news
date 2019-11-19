@@ -1,18 +1,19 @@
 import React from 'react';
-import PatchCommentVotes from './PatchCommentVotes';
+import CommentVotesChange from './CommentVotesChange';
 
-const CommentCard = ({comment}) => {
-  console.log(comment)
+const CommentCard = ({comment, article_id}) => {
+  
+  console.log('comment card', article_id)
   return (
     <div className="comment-card">
       <li>
       <h3>
-        {console.log(comment.author)}
+       
           posted by: {comment.author}
         </h3>
         <h4>
            votes: {comment.votes}
-           <PatchCommentVotes comment_id= {comment.comment_id}/>
+           <CommentVotesChange comment_id= {comment.comment_id} />
            <p>{comment.body}</p>
         </h4>
         <h5>

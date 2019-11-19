@@ -3,7 +3,9 @@ import { Link  } from '@reach/router'
 
 const ArticleCard = ({article}) => {
   const myLink = `/authors/${article.author}`
+  console.log(article.votes)
   return (
+    
     <div className="article-card">
       <li>
         <h3>
