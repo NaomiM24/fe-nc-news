@@ -1,15 +1,16 @@
 import React from 'react';
 import ArticlesList from './ArticlesList';
+import SelectUser from './SelectUser';
 
 const Home = () => {
     return (
-      <div className="homepage">
-      
-      <main className="articles-list">
+      <main className="homepage">
+      <SelectUser />
+      <section className="articles-list">
         <ArticlesList />
         
+      </section>
       </main>
-      </div>
     );
   }
   

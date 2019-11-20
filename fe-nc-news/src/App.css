@@ -108,7 +108,7 @@ ul {
   grid-column: 2/3;
   grid-row: 2/3;
 }
-.vote{
+/* .vote{
   display: inline-block;
 }
 
@@ -123,7 +123,7 @@ ul {
 }
 input:checked + label {
   background: red;
-}
+} */
 
 .like:hover {
   color:green;

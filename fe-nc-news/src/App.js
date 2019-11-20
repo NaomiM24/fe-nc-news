@@ -6,6 +6,7 @@ import Home from './components.js/Home';
 import ArticlesByTopic from './components.js/ArticlesByTopic';
 import ArticlesByAuthor from './components.js/ArticlesByAuthor';
 import SingleArticle from './components.js/SingleArticle';
+import ErrorPage from './components.js/ErrorPage'
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <ArticlesByTopic path='/topics/:topicName'/>
       <ArticlesByAuthor path='/authors/:authorName'/>
       <SingleArticle path='/articles/:article_id'/>
+      <ErrorPage default />
     </Router>
 
     </div>

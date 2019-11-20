@@ -39,5 +39,16 @@ export const updateArticleVotes = (article_id, number) => {
 }
 
 export const getUser = (user_id) => {
-  return axios.get(`${baseURL}/users/${user_id}`)
+  return axios.get(`${baseURL}/users/${user_id}`,)
+}
+
+export const getAllUsers = () => {
+  return axios.get(`${baseURL}/users`)
+}
+
+export const addComment = (article_id, username, body) => {
+  return axios.post(`${baseURL}/articles/${article_id}/comments`,{
+    username,
+    body
+  })
 }

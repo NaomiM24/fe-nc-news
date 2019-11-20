@@ -1,21 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
+import * as api from '../api'
 import { Link  } from '@reach/router'
 import ArticleVotesChange from './ArticleVotesChange'
 
-const ArticleCard = ({article}) => {
-  const ArticleLink = `/articles/${article.article_id}`
-  const AuthorLink = `/authors/${article.author}`
-  const TopicLink = `/topics/${article.topic}`
-  //console.log(article.votes)
-  //console.log(new Date(article.created_at))
-  return (
-    
-    <div className="article-card">
+class ArticleCard extends Component {
+  state = {
+    user: {}
+  }
+
+  render() {
+    const {article} = this.props
+    const ArticleLink = `/articles/${article.article_id}`
+    const AuthorLink = `/authors/${article.author}`
+    const TopicLink = `/topics/${article.topic}`
+    return (
+      <div className="article-card">
       <li>
         <h2>
           <Link to = {ArticleLink}>{article.title}</Link>
         </h2>
         <h3>
+        <img src={this.state.user.avatar_url} alt="user avatar" className="avatar" /><br/>
           by: <Link to= {AuthorLink}> {article.author}</Link>
           <br/>
           in: <Link to = {TopicLink}>{article.topic}</Link>
@@ -29,7 +34,17 @@ const ArticleCard = ({article}) => {
         </h5>
       </li>
     </div>
-  );
-};
+    );
+  }
+  componentDidMount() {
+    this.fetchUser()
+  }
+
+  fetchUser() {
+    const {author} = this.props.article
+    api.getUser(author).then(({data : {user}}) =>
+    this.setState({user})
+    )}
+}
 
 export default ArticleCard;

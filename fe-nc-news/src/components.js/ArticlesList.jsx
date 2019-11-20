@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {Link} from '@reach/router'
 import ArticleCard from './ArticleCard';
 import * as api from '../api';
+import ErrorPage from './ErrorPage';
 
 class ArticlesList extends Component {
   state = {
@@ -11,15 +11,21 @@ class ArticlesList extends Component {
     sort_by: null,
     order: null,
     isLoading: true,
+    error: null,
   }
   render() {
-    //console.log(this.state.articles)
-    if (this.state.isLoading){
+    const {isLoading, error} = this.state
+    if (isLoading){
       return <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="loading..."/>
     } 
+    if (error !== null){
+      return <ErrorPage msg={error.data.msg} status ={error.status}/>
+    }
+
      
     return (
       <div>
+       
         <form>
           <label>
             Sort By:
@@ -39,7 +45,7 @@ class ArticlesList extends Component {
           {this.state.articles.map(article => {
             return (
               // <Link key={article.article_id} to={`/articles/${article.article_id}`}> 
-                <ArticleCard article={article} />
+                <ArticleCard article={article} key={article.article_id}/>
               /* </Link> */            
             )       
           })}
@@ -65,9 +71,13 @@ class ArticlesList extends Component {
     api.getAllArticles(topicName, authorName, sort_by,
       order)
     .then(({data: {articles}}) => {
-      this.setState({articles, isLoading: false, topic: topicName, author: authorName, sort_by,
-        order})
+      this.setState({articles, isLoading: false, topic: topicName, author: authorName, sort_by, order
+      })
     })
+      .catch(error => {
+        const err = error.response
+        this.setState({error: err, isLoading: false})
+        })
   }
 
   handleSelectChange = (event) => {
