@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
-import * as api from 'react';
+import * as api from '../api';
 
 class CommentAdder extends Component {
   state = { 
-    body: ""
+    body: "",
+    postedComment: {}
   }
   render() {
-    
+    const {postedComment} = this.state
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <label>
             Comment:
-            <input type="text" required placeholder="What do you think?" onChange = {this.handleChange}/>
+            <input type="text" required placeholder="What do you think?" onChange = {this.handleChange} value={this.state.body}/>
           </label>
           <button >Post</button>
         </form>
+        {postedComment.created_at && 
+        <><p>comment posted successfully at {postedComment.created_at} by {postedComment.author}</p>
+        <br/>
+        <p>{postedComment.body}</p></>}
       </div>
     );
   }
@@ -25,11 +30,11 @@ class CommentAdder extends Component {
   }
   handleSubmit = (event) => {
     event.preventDefault();
-    const {article_id} = this.props
+    const {article_id, user} = this.props
     const {body} = this.state
-
-    api.addComment(article_id,'tickle122', body).then(response => console.log(response))
-    
+    api.addComment(article_id, user, body).then(({data:{comment}}) => {
+        this.setState({body: '', postedComment: comment })
+    })
   }
 }
 

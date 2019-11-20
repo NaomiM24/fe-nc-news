@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CommentVotesChange from './CommentVotesChange';
 import * as api from '../api'
+import CommentRemover from './CommentRemover';
 
 //({comment, article_id}) 
 class CommentCard extends Component {
@@ -9,8 +10,7 @@ class CommentCard extends Component {
   }
   render() {
     const {user} = this.state
-    console.log(user)
-    const {comment} = this.props
+    const {comment, selectedUser} = this.props
     return (
       <main >
          <li className="comment-card">
@@ -26,7 +26,7 @@ class CommentCard extends Component {
         <h5 className = "comment-published-at">
           published at: {comment.created_at}
         </h5>
-
+        {selectedUser === comment.author && <CommentRemover comment_id={comment.comment_id} article_id={this.props.article_id}/>}
        </li>
       </main>
     );

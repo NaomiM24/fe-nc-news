@@ -38,10 +38,10 @@ class SingleArticle extends Component {
       </main>
       <section>
         <Toggle buttonName="Add a Comment">
-          <CommentAdder article_id = {article.article_id}/>
+          <CommentAdder article_id = {article.article_id} user={this.props.selectedUser}/>
         </Toggle>
         <Toggle buttonName="View Comments">
-          <Comments article_id={article.article_id}/>
+          <Comments article_id={article.article_id} selectedUser={this.props.selectedUser}/>
         </Toggle>
       </section>
       </div>

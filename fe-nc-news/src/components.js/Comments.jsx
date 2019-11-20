@@ -22,13 +22,12 @@ class Comments extends Component {
             Sort By:
             <select onChange={this.handleSelectChange}>
             <option value="created_at">Date</option>
-            <option value="author">Author</option>
             <option value="votes">Votes</option>
             </select>
           </label>
           <label>
             Order By:
-            Ascending<input type="radio" name="order" value="asc" defaultChecked onClick={this.handleClick}/>
+            Ascending<input type="radio" name="order" value="asc" onClick={this.handleClick}/>
             Descending<input type="radio" name="order" value="desc" onClick={this.handleClick}/>
           </label>
         </form>
@@ -36,7 +35,7 @@ class Comments extends Component {
         <ul id = "comment-list" >
           {this.state.comments.map(comment => {
             return (
-              <CommentCard comment={comment} key={comment.comment_id}/>
+              <CommentCard comment={comment} key={comment.comment_id} selectedUser={this.props.selectedUser} article_id={this.props.article_id}/>
             )
           })}
         </ul>

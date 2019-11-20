@@ -52,3 +52,7 @@ export const addComment = (article_id, username, body) => {
     body
   })
 }
+
+export const deleteComment = (comment_id) => {
+  return axios.delete(`${baseURL}/comments/${comment_id}`)
+}
