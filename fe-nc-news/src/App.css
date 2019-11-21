@@ -79,14 +79,29 @@ ul {
 }
 
 .article-card h2{
+  color: black;
   grid-row: 1/2;
   grid-column: 2/3;
 }
 
-.article-body{
-  width: 75%;
-  justify-content: center;
+a:link{
+  color: #48639C;
+  text-decoration: none;
 }
+
+a:visited{
+  color: #48639C;
+  text-decoration: none;
+}
+
+a:hover{
+  color: #697FAE;
+}
+
+/* .p{
+  width: 75%;
+  text-align: center;
+} */
 
 .article-comments{
   background-color:white;
@@ -129,6 +144,11 @@ ul {
   grid-row: 2/3;
 }
 
+button{
+  border-radius: 25px;
+  padding: 1.1em; 
+  background-color: white;
+}
 .comment-remover{
   grid-column: 2/3;
   grid-row: 3/4;
@@ -137,11 +157,6 @@ ul {
   background-color: #B4656F;
 }
 
-button{
-  border-radius: 25px;
-  padding: 1.1em; 
-  background-color: white;
-}
 
 .like:hover {
   background-color: darkseagreen;
@@ -163,4 +178,5 @@ button{
 
 .avatar{
   height: 50px;
+  border-radius: 50%;
 }

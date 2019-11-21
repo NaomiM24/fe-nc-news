@@ -31,8 +31,8 @@ class SingleArticle extends Component {
       <div>
       <main>
         <h2>{article.title}</h2>
-        <Link to={AuthorLink}><h3>{article.author}</h3></Link>
-        <Link to={TopicLink}><h4>{article.topic}</h4></Link>
+        <Link to={AuthorLink}><h3>by {article.author}</h3></Link>
+        <Link to={TopicLink}><h4>in {article.topic}</h4></Link>
         <h5 className = "article-votes"> <ArticleVotesChange article_id= {article.article_id} article_vote={article.votes}/>comments: {article.comment_count}</h5>
         <p className="article-body">{article.body}</p>
       </main>

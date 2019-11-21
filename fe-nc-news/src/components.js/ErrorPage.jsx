@@ -1,6 +1,7 @@
 import React from 'react';
 
 const ErrorPage = ({msg, status}) => {
+  console.log(msg)
   return (
     <main>
       <h2> Error: {status} </h2>

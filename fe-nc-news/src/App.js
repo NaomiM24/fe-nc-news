@@ -14,7 +14,11 @@ import Topics from './components.js/Topics';
 class App extends Component {
   
   state = {
-    selectedUser: 'tickle122'
+    selectedUser: 'tickle122',
+    error: {
+      status: 404,
+      msg: 'Page not found'
+    }
   }
 
   handleUserChange = (event) => {
@@ -34,7 +38,7 @@ class App extends Component {
       <ArticlesByTopic path='/topics/:topicName'/>
       <ArticlesByAuthor path='/authors/:authorName'/>
       <SingleArticle path='/articles/:article_id' selectedUser={this.state.selectedUser}/>
-      <ErrorPage default />
+      <ErrorPage default msg={this.state.error.msg} status={this.state.error.status}/>
     </Router>
 
     </div>
