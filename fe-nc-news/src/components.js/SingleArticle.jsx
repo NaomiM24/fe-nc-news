@@ -12,6 +12,7 @@ class SingleArticle extends Component {
     article: [],
     isLoading: true,
     error: null,
+    created_message: null,
   };
   render() {
     const {isLoading, error, article} = this.state
@@ -38,8 +39,9 @@ class SingleArticle extends Component {
       </main>
       <section>
         <Toggle buttonName="Add a Comment">
-          <CommentAdder article_id = {article.article_id} user={this.props.selectedUser}/>
+          <CommentAdder article_id = {article.article_id} user={this.props.selectedUser} handleCreatedMessage={this.handleCreatedMessage}/>
         </Toggle>
+        {this.state.created_message && <p className="comment-message">{this.state.created_message}</p>}
         <Toggle buttonName="View Comments">
           <Comments article_id={article.article_id} selectedUser={this.props.selectedUser}/>
         </Toggle>
@@ -58,6 +60,11 @@ class SingleArticle extends Component {
   }
   componentDidMount(){
     this.fetchData();
+  }
+
+  handleCreatedMessage = (event) => {
+    console.log(event)
+    this.setState({created_message: event})
   }
 }
 

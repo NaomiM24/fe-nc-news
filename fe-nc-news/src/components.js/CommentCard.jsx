@@ -6,7 +6,8 @@ import CommentRemover from './CommentRemover';
 //({comment, article_id}) 
 class CommentCard extends Component {
   state = {
-    user: {}
+    user: {},
+
   }
   render() {
     const {user} = this.state
@@ -27,8 +28,9 @@ class CommentCard extends Component {
           published at: {comment.created_at}
         </h5>
         <p className = "comment-body">{comment.body}</p>
-        {selectedUser === comment.author && <CommentRemover  comment_id={comment.comment_id} article_id={this.props.article_id} removeComments={this.props.removeComments}/>}
+        {selectedUser === comment.author && <CommentRemover  comment_id={comment.comment_id} removeComments={this.props.removeComments} handleDeletedMessage={this.props.handleDeletedMessage} />}
        </li>
+        
       </main>
     );
   }
@@ -41,6 +43,8 @@ class CommentCard extends Component {
     api.getUser(author).then(({data : {user}}) =>
     this.setState({user})
     )}
+
+ 
 }
 
 export default CommentCard;

@@ -71,6 +71,7 @@ ul {
   box-sizing: border-box;
   border-radius: 10px;
   background-color: #DDE2ED;
+  padding: 0 10px;
   margin: 2.5%;
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -157,6 +158,9 @@ button{
   background-color: #B4656F;
 }
 
+.comment-message{
+  font-style: italic;
+}
 
 .like:hover {
   background-color: darkseagreen;

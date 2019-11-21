@@ -20,13 +20,18 @@ class CommentRemover extends Component{
     }
     handleClick = () =>{
       const {comment_id, removeComments} = this.props
-      api.deleteComment(comment_id)
+      api.deleteComment(comment_id).then(() => {
+        this.props.handleDeletedMessage('Message Successfully Seleted')
+      })
       .catch(error => {
       return(
-        this.setState({vote: 0, error:{status: 500, msg: 'your comment could not be deleted at this time, please try again later'}}))
+        this.props.handleDeletedMessage('status: 500, your comment could not be deleted at this time, please try again later')
+        // this.setState({vote: 0, error:{status: 500, msg: 'your comment could not be deleted at this time, please try again later'}})
+        )
      })
       removeComments(comment_id)
   }
+  
 };
 
 export default CommentRemover;

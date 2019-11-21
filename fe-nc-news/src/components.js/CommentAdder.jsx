@@ -18,10 +18,10 @@ class CommentAdder extends Component {
           <br/>
           <button >Post</button>
         </form>
-        {postedComment.created_at && 
+        {/* {postedComment.created_at && 
         <><p>comment posted successfully at {postedComment.created_at} by {postedComment.author}</p>
         <br/>
-        <p>{postedComment.body}</p></>}
+        <p>{postedComment.body}</p></>} */}
       </div>
     );
   }
@@ -33,10 +33,19 @@ class CommentAdder extends Component {
     event.preventDefault();
     const {article_id, user} = this.props
     const {body} = this.state
-    api.addComment(article_id, user, body).then(({data:{comment}}) => {
-        this.setState({body: '', postedComment: comment })
-    })
+    api.addComment(article_id, user, body).then(() => {
+      this.setState({body: ''})
+      this.props.handleCreatedMessage('Comment Successfully Posted')
+    }).catch(error => {
+      return(
+        this.props.handleCreatedMessage('status: 500, your comment could not be posted at this time, please try again later')
+        )
+     })
   }
 }
+
+// (({data:{comment}}) => {
+//   this.setState({body: '', postedComment: comment })
+// })
 
 export default CommentAdder;

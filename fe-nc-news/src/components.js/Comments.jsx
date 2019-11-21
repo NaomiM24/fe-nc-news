@@ -8,7 +8,9 @@ class Comments extends Component {
     comments: [],
     isLoading: true,
     order: null,
-    sort_by: null
+    sort_by: null,
+    
+    deleted_message: null,
   }
   render() {
   
@@ -35,10 +37,13 @@ class Comments extends Component {
           </label>
         </form>
       <section>
+          {this.state.deleted_message && <p className="comment-message">{this.state.deleted_message}</p>}
         <ul id = "comment-list" >
           {this.state.comments.map(comment => {
             return (
-              <CommentCard comment={comment} key={comment.comment_id} selectedUser={this.props.selectedUser} article_id={this.props.article_id} removeComments={this.removeComments}/>
+              <>
+              <CommentCard comment={comment} key={comment.comment_id} selectedUser={this.props.selectedUser} article_id={this.props.article_id} removeComments={this.removeComments} handleDeletedMessage={this.handleDeletedMessage} />
+              </>
             )
           })}
         </ul>
@@ -79,6 +84,17 @@ class Comments extends Component {
       })}
     })
   }
+
+  handleCreatedMessage = (event) => {
+    this.setState({created_message: event})
+  }
+
+  handleDeletedMessage = (event) => {
+    console.log(event)
+    this.setState({deleted_message: event})
+  }
+
+  
 }
 
 export default Comments;
