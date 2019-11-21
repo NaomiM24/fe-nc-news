@@ -1,19 +1,14 @@
 import React from 'react';
 import { Link  } from '@reach/router'
-import Topics from './Topics';
-import Toggle from './Toggle'
+import styles from '../css modules/Header.module.css'
+import home from '../home-icon.svg'
 
 
 const Header = () => {
   return (
     <header>
-      <h1>northcoders news</h1>
-      <nav>
-        <Link to="/">Home</Link>
-        <Toggle buttonName="Topics">
-          <Topics />
-        </Toggle>
-      </nav>
+      <Link to="/" className={styles.home}><img src={home} alt="Home"/></Link>
+      <h1 className={styles.title}>northcoders news</h1>
     </header>
   );
 };

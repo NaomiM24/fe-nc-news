@@ -3,6 +3,7 @@ import ArticleCard from './ArticleCard';
 import * as api from '../api';
 import ErrorPage from './ErrorPage';
 
+
 class ArticlesList extends Component {
   state = {
     articles: [],
@@ -29,12 +30,12 @@ class ArticlesList extends Component {
         <form>
           <label>
             Sort By:
-            <select onChange={this.handleSelectChange}>
+            <select onChange={this.handleSelectChange}className="dropDown">
             <option value="created_at">Date</option>
             <option value="votes">Votes</option>
             <option value="comment_count">Comment Count</option>
             </select>
-          </label>
+          </label><br/>
           <label>
             Order By:
             Ascending<input type="radio" name="order" value="asc" defaultChecked onClick={this.handleClick}/>

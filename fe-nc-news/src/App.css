@@ -1,7 +1,10 @@
+
+/* #48639C, 88A0A8, BAA7B0, 8A8D91, BCD0C7 */
 .App {
   text-align: center;
   display: grid;
-  grid-template-rows: 100px, auto;
+  grid-template-rows: 100px, 100px, auto;
+  background-color: white;
 }
 
 .App-logo {
@@ -13,7 +16,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;	 
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
@@ -23,12 +26,10 @@
   color: #09d3ac;
 }
 
-header{
-  grid-row: 1/2;
-  /* position: fixed; */
-  padding: 10px 16px;
-  width: 100%;
-  background-color: white;
+.dropDown{
+  border-radius: 25px;
+  padding: 1em;
+  background-color: #FFFBFE;
 }
 
 li {
@@ -37,38 +38,42 @@ li {
 
 ul {
   padding: 0;
+  margin: 0;
 }
 
 .articles-list{
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   margin: 0;
   padding: 0;
 }
 
-.article-card{
-  box-sizing: border-box;
-  border-radius: 25px;
-  background: #b1b9e7;
-  margin: 2.5%;
-  padding: 2.5%;
-}
-
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px){
   .articles-list{
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
 }
-/* .sidenav{
-  grid-column: 1/2;
-  height: 100%;
-  width: 25%;
-  position: fixed;
-  background-color: lightblue; 
-  overflow-x: hidden; 
-  padding-top: 20px;
+/* .article-list form{
+  grid-column: 1/span 3;
 } */
+.article-card{
+  box-sizing: border-box;
+  border-radius: 25px;
+  border-style: double;
+  background: white;
+  margin: 2.5%;
+  padding: 2.5%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto auto auto auto
+}
+
+.article-card h2{
+  grid-row: 1/2;
+  grid-column: 2/3;
+}
 
 .article-comments{
   background-color: cadetblue;
@@ -80,6 +85,7 @@ ul {
   margin: 0;
   padding: 0;
 }
+
 
 .comment-card{
   display: grid;
@@ -108,22 +114,7 @@ ul {
   grid-column: 2/3;
   grid-row: 2/3;
 }
-/* .vote{
-  display: inline-block;
-}
 
-.vote input {
-  visibility:hidden;
-}
-.vote label {
-  cursor: pointer;
-  border-style: outset;
-  border-radius: 25px;
-  text-align: center;
-}
-input:checked + label {
-  background: red;
-} */
 
 .like:hover {
   color:green;

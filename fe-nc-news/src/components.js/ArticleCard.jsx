@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as api from '../api'
 import { Link  } from '@reach/router'
 import ArticleVotesChange from './ArticleVotesChange'
+import styles from '../css modules/Header.module.css'
 
 class ArticleCard extends Component {
   state = {
@@ -15,7 +16,7 @@ class ArticleCard extends Component {
     const TopicLink = `/topics/${article.topic}`
     return (
       <div className="article-card">
-      <li>
+      
         <h2>
           <Link to = {ArticleLink}>{article.title}</Link>
         </h2>
@@ -32,7 +33,7 @@ class ArticleCard extends Component {
         <h5>
           published at: {article.created_at}
         </h5>
-      </li>
+      
     </div>
     );
   }
