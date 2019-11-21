@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import * as api from '../api'
+import up from '../up.svg'
+import down from '../down.svg'
 
 
 class ArticleVotesChange extends Component {
@@ -17,16 +19,16 @@ class ArticleVotesChange extends Component {
       <div>
         votes: {this.props.article_vote + +this.state.vote}
         <br/>
-            <button className="like" value="1" onClick={this.handleClick} >
-              Like
+            <button className="like" value={1} onClick={this.handleClick} disabled={ this.state.vote===1 ? true : false}>Like
+            {/* <img src={up} alt="Home" id="vote-img"/> */}
             </button>
-            <button className="dislike" value="-1" onClick={this.handleClick}>
-              Dislike
-            </button>
-            <button className="cancelVote" value="0" onClick={this.handleClick}>
+            <button className="dislike" value={-1} onClick={this.handleClick} disabled={ this.state.vote===-1 ? true : false}>
+            {/* <img src={down} alt="Home" id="vote-img"/> */}Dislike
+            </button><br/>
+            <button className="cancel" value={0} onClick={this.handleClick} disabled={ this.state.vote===0 ? true : false}>
               Cancel Vote
             </button>
-            {(this.state.error.status !== null) && <p>Error {status}! {msg}</p>}
+            {(status !== null) && <p>Error {status}! {msg}</p>}
       </div>
     );
   }

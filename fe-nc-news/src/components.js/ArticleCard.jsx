@@ -16,7 +16,7 @@ class ArticleCard extends Component {
     const TopicLink = `/topics/${article.topic}`
     return (
       <div className="article-card">
-      
+        <li>
         <h2>
           <Link to = {ArticleLink}>{article.title}</Link>
         </h2>
@@ -26,14 +26,14 @@ class ArticleCard extends Component {
           <br/>
           in: <Link to = {TopicLink}>{article.topic}</Link>
         </h3>
+        <h5>
+          published at: {article.created_at}
+        </h5>
         <h4 className = "article-votes">
           
           <ArticleVotesChange article_id= {article.article_id} article_vote={article.votes}/>
        </h4>
-        <h5>
-          published at: {article.created_at}
-        </h5>
-      
+        </li>
     </div>
     );
   }

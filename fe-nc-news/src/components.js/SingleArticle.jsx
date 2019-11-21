@@ -34,7 +34,7 @@ class SingleArticle extends Component {
         <Link to={AuthorLink}><h3>{article.author}</h3></Link>
         <Link to={TopicLink}><h4>{article.topic}</h4></Link>
         <h5 className = "article-votes"> <ArticleVotesChange article_id= {article.article_id} article_vote={article.votes}/>comments: {article.comment_count}</h5>
-        <p>{article.body}</p>
+        <p className="article-body">{article.body}</p>
       </main>
       <section>
         <Toggle buttonName="Add a Comment">

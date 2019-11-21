@@ -15,6 +15,7 @@ class CommentAdder extends Component {
             Comment:
             <input type="text" required placeholder="What do you think?" onChange = {this.handleChange} value={this.state.body}/>
           </label>
+          <br/>
           <button >Post</button>
         </form>
         {postedComment.created_at && 

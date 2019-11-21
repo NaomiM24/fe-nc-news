@@ -29,7 +29,7 @@
 .dropDown{
   border-radius: 25px;
   padding: 1em;
-  background-color: #FFFBFE;
+  background-color:  #DDE2ED;
 }
 
 li {
@@ -41,15 +41,24 @@ ul {
   margin: 0;
 }
 
-.articles-list{
+.articles-list ul{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin: 0;
   padding: 0;
 }
 
-@media only screen and (max-width: 900px){
-  .articles-list{
+@media only screen and (max-width: 1200px){
+  .articles-list ul{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  margin: 0;
+  padding: 0;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .articles-list ul{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,16 +67,15 @@ ul {
 /* .article-list form{
   grid-column: 1/span 3;
 } */
-.article-card{
+.article-card li{
   box-sizing: border-box;
-  border-radius: 25px;
-  border-style: double;
-  background: white;
+  border-radius: 10px;
+  background-color: #DDE2ED;
   margin: 2.5%;
-  padding: 2.5%;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: auto auto auto auto
+  grid-template-rows: auto auto auto ;
+  align-items: center;
 }
 
 .article-card h2{
@@ -75,9 +83,15 @@ ul {
   grid-column: 2/3;
 }
 
-.article-comments{
-  background-color: cadetblue;
+.article-body{
+  width: 75%;
+  justify-content: center;
 }
+
+.article-comments{
+  background-color:white;
+}
+
 
 .comment-list{
   display: flex;
@@ -90,13 +104,12 @@ ul {
 .comment-card{
   display: grid;
   border-radius: 25px;
-  border-style: double;
   grid-template-rows: 1fr 0.5fr; 
   grid-template-columns: 1fr 2fr;
   box-sizing: border-box;
-  background-color: white;
   margin: 2.5%;
-  padding: 2.5%;
+  background-color: #DDE2ED;
+  align-items: center;
 }
 .comment-user{
   grid-column: 1/2;
@@ -104,25 +117,49 @@ ul {
 .comment-body{
   grid-column: 2/3;
   grid-row: 1/2;
+  justify-content: start;
 }
 .comment-votes{
-  grid-column: 1/2;
-  grid-row: 2/3;
-}
-
-.comment-published-at{
   grid-column: 2/3;
   grid-row: 2/3;
 }
 
+.comment-published-at{
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+.comment-remover{
+  grid-column: 2/3;
+  grid-row: 3/4;
+  width: 30%;
+  justify-self: center;
+  background-color: #B4656F;
+}
+
+button{
+  border-radius: 25px;
+  padding: 1.1em; 
+  background-color: white;
+}
 
 .like:hover {
-  color:green;
+  background-color: darkseagreen;
 }
 
+
 .dislike:hover {
-  color:red;
+  background-color: indianred;
 }
+
+.cancel:hover{
+  background-color: grey;
+}
+
+/* #down-img{
+  height: 30px;
+  padding: 0
+} */
 
 .avatar{
   height: 50px;

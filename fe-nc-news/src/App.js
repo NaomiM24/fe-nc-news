@@ -28,7 +28,7 @@ class App extends Component {
      <Header />
      <Topics />
      <SelectUser handleUserChange={this.handleUserChange}/>
-     <h2>Welcome {this.state.selectedUser}</h2>
+     <h2>Welcome {this.state.selectedUser}!</h2>
     <Router>
       <Home path='/'/>
       <ArticlesByTopic path='/topics/:topicName'/>
