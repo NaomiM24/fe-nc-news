@@ -25,7 +25,7 @@ class ArticlesList extends Component {
 
      
     return (
-      <div>
+      <div className="articles-list">
        
         <form>
           <label>
@@ -38,7 +38,7 @@ class ArticlesList extends Component {
           </label><br/>
           <label>
             Order By:
-            Ascending<input type="radio" name="order" value="asc" defaultChecked onClick={this.handleClick}/>
+            Ascending<input type="radio" name="order" value="asc" onClick={this.handleClick}/>
             Descending<input type="radio" name="order" value="desc" onClick={this.handleClick}/>
           </label>
         </form>

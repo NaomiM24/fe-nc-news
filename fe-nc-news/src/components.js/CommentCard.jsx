@@ -12,6 +12,9 @@ class CommentCard extends Component {
   render() {
     const {user} = this.state
     const {comment, selectedUser} = this.props
+    const date = (comment.created_at.split('T'))
+    const ukDate = date[0].split('-')
+    const time = date[1].split(':')
     return (
       <main >
          <li className="comment-card">
@@ -25,7 +28,7 @@ class CommentCard extends Component {
            <CommentVotesChange comment_id= {comment.comment_id} comment_vote={comment.votes}/>
         </h4>
         <h5 className = "comment-published-at">
-          published at: {comment.created_at}
+        published on {ukDate[2]}-{ukDate[1]}-{ukDate[0]} at {time[0]}:{time[1]}
         </h5>
         <p className = "comment-body">{comment.body}</p>
         {selectedUser === comment.author && <CommentRemover  comment_id={comment.comment_id} removeComments={this.props.removeComments} handleDeletedMessage={this.props.handleDeletedMessage} />}

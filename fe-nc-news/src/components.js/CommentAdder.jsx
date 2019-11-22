@@ -4,24 +4,23 @@ import * as api from '../api';
 class CommentAdder extends Component {
   state = { 
     body: "",
-    postedComment: {}
+    postedComment: {},
+    isLoading: false,
   }
   render() {
-    const {postedComment} = this.state
+    const {isLoading} = this.state
+    if (isLoading){
+      return <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="loading..."/>
+    } 
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label>
-            Comment:
-            <input type="text" required placeholder="What do you think?" onChange = {this.handleChange} value={this.state.body}/>
-          </label>
+            <textarea type="text" required placeholder="What do you think?" className="comment-add-box" onChange = {this.handleChange} value={this.state.body}/>
           <br/>
+
           <button >Post</button>
+          <br/>
         </form>
-        {/* {postedComment.created_at && 
-        <><p>comment posted successfully at {postedComment.created_at} by {postedComment.author}</p>
-        <br/>
-        <p>{postedComment.body}</p></>} */}
       </div>
     );
   }
@@ -33,8 +32,9 @@ class CommentAdder extends Component {
     event.preventDefault();
     const {article_id, user} = this.props
     const {body} = this.state
+    this.setState({isLoading: true})
     api.addComment(article_id, user, body).then(() => {
-      this.setState({body: ''})
+      this.setState({body: '', isLoading: false})
       this.props.handleCreatedMessage('Comment Successfully Posted')
     }).catch(error => {
       return(

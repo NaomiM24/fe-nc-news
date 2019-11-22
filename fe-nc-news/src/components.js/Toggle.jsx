@@ -8,7 +8,7 @@ class Toggle extends Component {
     return (
       <div >
         {(this.state.showContent) && this.props.children}
-        <button onClick={this.displayContent} className="well-done">{this.props.buttonName}</button>
+        <button onClick={this.displayContent} >{this.props.buttonName}</button>
       </div>
     );
   }

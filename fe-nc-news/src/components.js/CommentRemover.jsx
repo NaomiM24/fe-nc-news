@@ -1,15 +1,20 @@
 import React, {Component} from 'react';
 import * as api from '../api';
-import {navigate} from '@reach/router'
+
 
 class CommentRemover extends Component{
   state = {
     error: {
       status: null,
       msg: '',
+      isLoading: false,
     }
   }
   render() {
+    const {isLoading} = this.state
+    if (isLoading){
+      return <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="loading..."/>
+    } 
     const {status, msg} = this.state.error
     return (
       <>
@@ -20,8 +25,10 @@ class CommentRemover extends Component{
     }
     handleClick = () =>{
       const {comment_id, removeComments} = this.props
+      this.setState({isLoading: true})
       api.deleteComment(comment_id).then(() => {
-        this.props.handleDeletedMessage('Message Successfully Seleted')
+        this.setState({isLoading: false})
+        this.props.handleDeletedMessage('Message Successfully Deleted')
       })
       .catch(error => {
       return(

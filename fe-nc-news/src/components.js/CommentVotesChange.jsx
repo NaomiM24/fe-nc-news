@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import * as api from '../api'
-import up from '../up.svg'
-import down from '../down.svg'
 
 class CommentVotesChange extends Component {
 
@@ -17,18 +15,17 @@ class CommentVotesChange extends Component {
   render() {
  
     const {status, msg} = this.state.error
-    console.log(this.state.vote)
-    
+ 
     return (
       <div>
          votes: {this.props.comment_vote + +this.state.vote}
          <br/>
             <button className="like" value='1' onClick={this.handleClick} disabled={ this.state.vote===1 ? true : false}>
-              {/* <img src={up} alt="Home" id="vote-img"/> */}Like
+             Like
             </button>        
             <button className="dislike" value="-1" onClick={this.handleClick} disabled={ this.state.vote===-1 ? true : false}>
-            {/* <img src={down} alt="Home" id="vote-img"/>            */}Dislike
-            </button><br/>
+                 Dislike
+            </button>
             <button className="cancelVote" value="0" onClick={this.handleClick} disabled={ this.state.vote===0 ? true : false}>
               Cancel Vote
             </button>
@@ -43,8 +40,21 @@ class CommentVotesChange extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.vote !== this.state.vote){
-      const {comment_id} = this.props
+    const { comment_id } = this.props;
+    if (+this.state.vote === 0 && +prevState.vote !== 0){
+      const vote = -(+prevState.vote)
+      api.updateCommentVotes(comment_id, vote).catch(error => {
+        return this.setState({
+          vote: 0,
+          error: {
+            status: 500,
+            msg: "cancel vote did not work at this time, please try again later"
+          }
+        });
+      });
+    }
+    else if (prevState.vote !== this.state.vote){
+
       const {vote} = this.state
       api.updateCommentVotes(comment_id, vote) 
       .catch(error => {

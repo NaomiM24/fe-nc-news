@@ -42,8 +42,9 @@ class SingleArticle extends Component {
           <CommentAdder article_id = {article.article_id} user={this.props.selectedUser} handleCreatedMessage={this.handleCreatedMessage}/>
         </Toggle>
         {this.state.created_message && <p className="comment-message">{this.state.created_message}</p>}
-        <Toggle buttonName="View Comments">
-          <Comments article_id={article.article_id} selectedUser={this.props.selectedUser}/>
+        <br/>
+        <Toggle buttonName={this.props.showContent ? "Hide Comments": "View Comments" }>
+          <Comments article_id={article.article_id} selectedUser={this.props.selectedUser} key={1}/>
         </Toggle>
       </section>
       </div>

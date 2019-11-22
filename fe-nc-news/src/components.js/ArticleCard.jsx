@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as api from '../api'
 import { Link  } from '@reach/router'
 import ArticleVotesChange from './ArticleVotesChange'
-import styles from '../css modules/Header.module.css'
+
 
 class ArticleCard extends Component {
   state = {
@@ -11,6 +11,9 @@ class ArticleCard extends Component {
 
   render() {
     const {article} = this.props
+    const date = (article.created_at.split('T'))
+    const ukDate = date[0].split('-')
+    const time = date[1].split(':')
     const ArticleLink = `/articles/${article.article_id}`
     const AuthorLink = `/authors/${article.author}`
     const TopicLink = `/topics/${article.topic}`
@@ -26,9 +29,11 @@ class ArticleCard extends Component {
           <br/>
           in: <Link to = {TopicLink}>{article.topic}</Link>
         </h3>
-        <h5>
-          published at: {article.created_at}
-        </h5>
+        <p>
+          comments: {article.comment_count}
+          <br/>
+          published on {ukDate[2]}-{ukDate[1]}-{ukDate[0]} at {time[0]}:{time[1]}
+        </p>
         <h4 className = "article-votes">
           
           <ArticleVotesChange article_id= {article.article_id} article_vote={article.votes}/>

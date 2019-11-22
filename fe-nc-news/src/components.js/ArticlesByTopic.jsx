@@ -6,7 +6,7 @@ class ArticlesByTopic extends Component {
   render() {
     return (
       <main>
-        <h2> {this.props.topicName} </h2>
+        <h2 className="topic"> {this.props.topicName} </h2>
         <ArticlesList topicName={this.props.topicName}/>
       </main>
     );
