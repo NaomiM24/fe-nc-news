@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CommentVotesChange from "./CommentVotesChange";
+import VotesChange from "./VotesChange";
 import * as api from "../api";
 import CommentRemover from "./CommentRemover";
 
@@ -21,9 +21,10 @@ class CommentCard extends Component {
           posted by: {comment.author}
         </h3>
         <h4 className="comment-votes">
-          <CommentVotesChange
-            comment_id={comment.comment_id}
-            comment_vote={comment.votes}
+          <VotesChange
+            type={"comments"}
+            id={comment.comment_id}
+            vote={comment.votes}
           />
         </h4>
         <h5 className="comment-published-at">

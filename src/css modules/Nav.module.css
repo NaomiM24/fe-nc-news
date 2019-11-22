@@ -1,18 +1,17 @@
-.ul{
-  /* position: fixed; */
+.ul {
   list-style-type: none;
   margin: 0;
   padding: 20px;
   overflow: hidden;
-  background-color: #697FAE;
+  background-color: #697fae;
 }
 
-.li{
-  display: inline
+.li {
+  display: inline;
 }
 
 .li a {
-  color:#FFFBFE;
+  color: #fffbfe;
   font-size: 1.5em;
   text-align: center;
   padding: 14px 16px;

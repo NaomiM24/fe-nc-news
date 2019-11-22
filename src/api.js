@@ -38,11 +38,12 @@ export const updateArticleVotes = (article_id, number) => {
   })
 }
 
-export const updateVotes = (type, article_id, number) => {
-  return axios.patch(`${baseURL}/type/${article_id}`, {
+export const updateVotes = (type, id, number) => {
+  return axios.patch(`${baseURL}/${type}/${id}`, {
       inc_votes: number
   })
 }
+
 
 export const getUser = (user_id) => {
   return axios.get(`${baseURL}/users/${user_id}`,)

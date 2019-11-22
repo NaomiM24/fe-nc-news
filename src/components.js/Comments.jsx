@@ -54,6 +54,7 @@ class Comments extends Component {
           )}
           <ul id="comment-list">
             {this.state.comments.map(comment => {
+              console.log(comment.comment_id)
               return (
                 <>
                   <CommentCard

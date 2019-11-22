@@ -4,7 +4,7 @@ import Toggle from "./Toggle.jsx";
 import Comments from "./Comments.jsx";
 import { Link } from "@reach/router";
 import ErrorPage from "./ErrorPage";
-import ArticleVotesChange from "./ArticleVotesChange";
+import VotesChange from "./VotesChange";
 import CommentAdder from "./CommentAdder.jsx";
 
 class SingleArticle extends Component {
@@ -44,9 +44,10 @@ class SingleArticle extends Component {
           </Link>
           <h5 className="article-votes">
             {" "}
-            <ArticleVotesChange
-              article_id={article.article_id}
-              article_vote={article.votes}
+            <VotesChange
+              type={"articles"}
+              id={article.article_id}
+              vote={article.votes}
             />
             comments: {article.comment_count}
           </h5>
@@ -72,7 +73,6 @@ class SingleArticle extends Component {
             <Comments
               article_id={article.article_id}
               selectedUser={this.props.selectedUser}
-              key={1}
             />
           </Toggle>
         </section>
