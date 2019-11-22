@@ -1,7 +1,6 @@
-import React from 'react';
+import React from "react";
 
-const ErrorPage = ({msg, status}) => {
-  console.log(msg)
+const ErrorPage = ({ msg, status }) => {
   return (
     <main>
       <h2> Error: {status} </h2>

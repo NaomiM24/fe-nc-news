@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../api";
 
-
 class ArticleVotesChange extends Component {
   state = {
     vote: 0,
@@ -10,6 +9,7 @@ class ArticleVotesChange extends Component {
       msg: ""
     }
   };
+
   render() {
     const { status, msg } = this.state.error;
 
@@ -24,7 +24,6 @@ class ArticleVotesChange extends Component {
           disabled={this.state.vote === 1 ? true : false}
         >
           Like
-          
         </button>
         <button
           className="dislike"
@@ -34,7 +33,6 @@ class ArticleVotesChange extends Component {
         >
           Dislike
         </button>
-        
         <button
           className="cancel"
           value={0}
@@ -58,8 +56,8 @@ class ArticleVotesChange extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { article_id } = this.props;
-    if (+this.state.vote === 0 && +prevState.vote !== 0){
-      const vote = -(+prevState.vote)
+    if (+this.state.vote === 0 && +prevState.vote !== 0) {
+      const vote = -+prevState.vote;
       api.updateArticleVotes(article_id, vote).catch(error => {
         return this.setState({
           vote: 0,
@@ -69,9 +67,7 @@ class ArticleVotesChange extends Component {
           }
         });
       });
-    }
-  
-    else if (prevState.vote !== this.state.vote) {
+    } else if (prevState.vote !== this.state.vote) {
       const { vote } = this.state;
       api.updateArticleVotes(article_id, vote).catch(error => {
         return this.setState({

@@ -73,9 +73,7 @@ ul {
   margin: 0;
   padding: 0;
   }
-  /* .article-card li{
-    height: 400px
-  } */
+
 }
 
 @media only screen and (max-width: 700px){
@@ -87,10 +85,12 @@ ul {
   .article-card li{
     height: auto;
   }
+  .comment-add-box{
+    width: 50%;
+
+  }
 }
-/* .article-list form{
-  grid-column: 1/span 3;
-} */
+
 
 .article-card h2{
   background-color: white;
@@ -114,11 +114,6 @@ a:visited{
 a:hover{
   color: #697FAE;
 }
-
-/* .p{
-  width: 75%;
-  text-align: center;
-} */
 
 .article-comments{
   background-color:white;
