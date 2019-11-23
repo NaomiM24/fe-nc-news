@@ -27,7 +27,7 @@
 .dropDown {
   border-radius: 25px;
   padding: 1em;
-  background-color: #dde2ed;
+  background-color: #f3f8ff;
 }
 
 li {
@@ -42,6 +42,22 @@ ul {
 .topic {
   font-size: 2em;
   font-style: italic;
+  color: #48639c;
+}
+
+a:link {
+  color: #48639c;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #48639c;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+  transition: 0.3s;
 }
 
 .articles-list ul {
@@ -54,14 +70,20 @@ ul {
 .article-card li {
   height: 400px;
   box-sizing: border-box;
-  background-color: #dde2ed;
+  background-color: #f3f8ff;
   padding: 0 10px;
-  margin: 2.5%;
+  margin: 3%;
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: auto 150px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 200px 150px 50px;
   align-items: center;
 }
+
+.article-card li:hover {
+  background-color: #8a9bc0;
+  transition: 0.3s;
+}
+
 @media only screen and (max-width: 1200px) {
   .articles-list ul {
     display: grid;
@@ -86,25 +108,46 @@ ul {
 }
 
 .article-card h2 {
-  background-color: white;
+  /* align-content: start; */
+  background-color: #697fae;
+  color: white;
   padding: 1.1em;
   border-radius: 10px;
   grid-row: 1/2;
+  grid-column: 1/4;
+  align-items: start;
+}
+
+.article-card h2 a:link {
+  color: white;
+}
+
+.article-card h2 a:visited {
+  color: white;
+}
+
+.article-card h2 a:hover {
+  color: #8a9bc0;
+  transition: 0.3s;
+}
+
+.article-card-user {
+  grid-row: 2/3;
+  grid-column: 1/2;
+}
+
+.article-card-votes {
+  grid-row: 2/3;
   grid-column: 2/3;
 }
-
-a:link {
-  color: #48639c;
-  text-decoration: none;
+.article-card-topic {
+  grid-row: 2/3;
+  grid-column: 3/4;
 }
 
-a:visited {
-  color: #48639c;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #697fae;
+.article-card p {
+  grid-row: 3/4;
+  grid-column: 1/4;
 }
 
 .article-comments {
@@ -122,7 +165,7 @@ a:hover {
   display: grid;
   border-radius: 25px;
   grid-template-rows: 1fr 0.5fr;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr;
   box-sizing: border-box;
   margin: 2.5%;
   background-color: #dde2ed;
@@ -130,10 +173,11 @@ a:hover {
   padding: 0 10px;
 }
 .comment-user {
-  grid-column: 1/2;
+  grid-column: 2/3;
+  grid-row: 2/3;
 }
 .comment-body {
-  grid-column: 2/3;
+  grid-column: 2/4;
   grid-row: 1/2;
   justify-content: start;
   background-color: white;
@@ -141,13 +185,25 @@ a:hover {
   border-radius: 10px;
 }
 .comment-votes {
-  grid-column: 2/3;
-  grid-row: 2/3;
+  grid-column: 1/2;
+  grid-row: 1/2;
 }
 
 .comment-published-at {
   grid-column: 1/2;
   grid-row: 2/3;
+}
+
+.comment-remover {
+  grid-column: 3/4;
+  grid-row: 2/3;
+  width: 30%;
+  justify-self: center;
+  border: 0;
+}
+
+.comment-remover img {
+  height: 50px;
 }
 
 button {
@@ -165,35 +221,31 @@ button:hover {
   resize: vertical;
 }
 
-.comment-remover {
-  grid-column: 2/3;
-  grid-row: 3/4;
-  width: 30%;
-  justify-self: center;
-  background-color: #b4656f;
-}
-
 .comment-message {
   font-style: italic;
 }
 
-.like {
+#like {
   font-size: 2em;
   border-radius: 50%;
   padding: 0px;
+  border: 0;
 }
 
-.like:hover {
+#like:hover {
   background-color: darkseagreen;
+  transition: 0.3s;
 }
 
-.dislike {
+#dislike {
   font-size: 2em;
   padding: 0px;
+  border: 0;
 }
 
-.dislike:hover {
+#dislike:hover {
   background-color: indianred;
+  transition: 0.3s;
 }
 
 .avatar {

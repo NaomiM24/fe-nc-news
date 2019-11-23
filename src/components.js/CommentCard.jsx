@@ -13,6 +13,7 @@ class CommentCard extends Component {
     const date = comment.created_at.split("T");
     const ukDate = date[0].split("-");
     const time = date[1].split(":");
+
     return (
       <li className="comment-card">
         <h3 className="comment-user">

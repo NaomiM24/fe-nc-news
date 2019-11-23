@@ -1,9 +1,12 @@
 .ul {
   list-style-type: none;
-  margin: 0;
+  margin: 120px 0px 0px 0px;
   padding: 20px;
   overflow: hidden;
   background-color: #697fae;
+  height: 30px;
+  width: 100%;
+  position: fixed;
 }
 
 .li {
@@ -11,7 +14,7 @@
 }
 
 .li a {
-  color: #fffbfe;
+  color: #f3f8ff;
   font-size: 1.5em;
   text-align: center;
   padding: 14px 16px;
@@ -20,4 +23,5 @@
 
 .li a:hover {
   color: #111;
+  transition: 0.3s;
 }

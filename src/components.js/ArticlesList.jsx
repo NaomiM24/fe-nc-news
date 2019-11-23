@@ -39,7 +39,7 @@ class ArticlesList extends Component {
             </select>
           </label>
           <br />
-          <label>Order By:</label>
+          <label>Order By: </label>
           Ascending
           <input
             type="radio"

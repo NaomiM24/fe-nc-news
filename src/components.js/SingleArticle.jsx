@@ -49,18 +49,17 @@ class SingleArticle extends Component {
               id={article.article_id}
               vote={article.votes}
             />
-            comments: {article.comment_count}
+            
           </h5>
           <p className="article-body">{article.body}</p>
         </main>
+        <h5>comments: {article.comment_count}</h5>
         <section>
-          <Toggle buttonName="Add a Comment">
             <CommentAdder
               article_id={article.article_id}
               user={this.props.selectedUser}
               handleCreatedMessage={this.handleCreatedMessage}
             />
-          </Toggle>
           {this.state.created_message && (
             <p className="comment-message">{this.state.created_message}</p>
           )}

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../api";
+import bin from "../bin.svg"
 
 class CommentRemover extends Component {
   state = {
@@ -22,9 +23,7 @@ class CommentRemover extends Component {
     const { status, msg } = this.state.error;
     return (
       <>
-        <button className="comment-remover" onClick={this.handleClick}>
-          Remove Comment
-        </button>
+          <img src={bin} alt="remove"className="comment-remover" onClick={this.handleClick}/>
         {status !== null && (
           <p>
             Error{status}! {msg}

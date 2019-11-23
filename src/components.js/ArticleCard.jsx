@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import * as api from "../api";
 import { Link } from "@reach/router";
 import VotesChange from "./VotesChange";
+import code from "../code.svg";
+import football from "../football.svg";
+import cooking from "../cooking.svg";
 
 class ArticleCard extends Component {
   state = {
@@ -22,24 +25,33 @@ class ArticleCard extends Component {
           <h2>
             <Link to={ArticleLink}>{article.title}</Link>
           </h2>
-          <h3>
-            <img
-              src={this.state.user.avatar_url}
-              alt="user avatar"
-              className="avatar"
-            />
-            <br />
-            by: <Link to={AuthorLink}> {article.author}</Link>
-            <br />
-            in: <Link to={TopicLink}>{article.topic}</Link>
-          </h3>
+          <div className="article-card-user">
+            <Link to={AuthorLink}>
+              <img
+                src={this.state.user.avatar_url}
+                alt="user avatar"
+                className="avatar"
+              />
+            </Link>
+          </div>
+          <div className="article-card-topic">
+            <Link to={TopicLink}>
+              {article.topic === "football" ? (
+                <img src={football} alt="football" />
+              ) : article.topic === "cooking" ? (
+                <img src={cooking} alt="cooking" />
+              ) : (
+                <img src={code} alt="code" />
+              )}
+            </Link>
+          </div>
           <p>
             comments: {article.comment_count}
             <br />
             published on {ukDate[2]}-{ukDate[1]}-{ukDate[0]} at {time[0]}:
             {time[1]}
           </p>
-          <h4 className="article-votes">
+          <h4 className="article-card-votes">
             <VotesChange
               id={article.article_id}
               vote={article.votes}

@@ -1,6 +1,6 @@
 header {
   grid-row: 1/2;
-  /* position: fixed; */
+  position: fixed;
   width: 100%;
   height: 120px;
   background-color: #48639c;
@@ -11,7 +11,7 @@ header {
 }
 
 .title {
-  color: #fffbfe;
+  color: #f3f8ff;
 }
 
 img {
