@@ -46,7 +46,7 @@ class ArticleCard extends Component {
             </Link>
           </div>
           <p>
-            comments: {article.comment_count}
+            {article.comment_count} comments
             <br />
             published on {ukDate[2]}-{ukDate[1]}-{ukDate[0]} at {time[0]}:
             {time[1]}

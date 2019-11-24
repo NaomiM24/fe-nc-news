@@ -6,6 +6,9 @@ import { Link } from "@reach/router";
 import ErrorPage from "./ErrorPage";
 import VotesChange from "./VotesChange";
 import CommentAdder from "./CommentAdder.jsx";
+import code from "../code.svg";
+import football from "../football.svg";
+import cooking from "../cooking.svg";
 
 class SingleArticle extends Component {
   state = {
@@ -33,33 +36,35 @@ class SingleArticle extends Component {
     const AuthorLink = `/authors/${article.author}`;
     const TopicLink = `/topics/${article.topic}`;
     return (
-      <div>
+      <div className="single-article">
         <main>
           <h2>{article.title}</h2>
           <Link to={AuthorLink}>
             <h3>by {article.author}</h3>
           </Link>
           <Link to={TopicLink}>
-            <h4>in {article.topic}</h4>
+            {article.topic === "football" ? (
+              <img src={football} alt="football" />
+            ) : article.topic === "cooking" ? (
+              <img src={cooking} alt="cooking" />
+            ) : (
+              <img src={code} alt="code" />
+            )}
           </Link>
-          <h5 className="article-votes">
-            {" "}
-            <VotesChange
-              type={"articles"}
-              id={article.article_id}
-              vote={article.votes}
-            />
-            
-          </h5>
+          <VotesChange
+            type={"articles"}
+            id={article.article_id}
+            vote={article.votes}
+          />
           <p className="article-body">{article.body}</p>
         </main>
-        <h5>comments: {article.comment_count}</h5>
+        <h5>{article.comment_count} comments </h5>
         <section>
-            <CommentAdder
-              article_id={article.article_id}
-              user={this.props.selectedUser}
-              handleCreatedMessage={this.handleCreatedMessage}
-            />
+          <CommentAdder
+            article_id={article.article_id}
+            user={this.props.selectedUser}
+            handleCreatedMessage={this.handleCreatedMessage}
+          />
           {this.state.created_message && (
             <p className="comment-message">{this.state.created_message}</p>
           )}

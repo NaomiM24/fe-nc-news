@@ -57,9 +57,7 @@ class ArticlesList extends Component {
         </form>
         <ul id="article-list">
           {this.state.articles.map(article => {
-            return (
-              <ArticleCard article={article} key={article.article_id} />       
-            );
+            return <ArticleCard article={article} key={article.article_id} />;
           })}
         </ul>
       </div>

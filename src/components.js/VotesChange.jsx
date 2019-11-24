@@ -14,19 +14,18 @@ class VotesChange extends Component {
     const { status, msg } = this.state.error;
     const { vote } = this.props;
 
-
     return (
       <div>
         <button
           id="like"
-          className={"has-been-" + (this.state.vote === 1 && 'liked')}
+          className={"has-been-" + (this.state.vote === 1 && "liked")}
           value={1}
           onClick={this.handleClick}
           disabled={this.state.vote === 1 ? true : false}
         >
           ⇧
         </button>
-        <br/>
+        <br />
         {vote + +this.state.vote}
         <br />
         <button

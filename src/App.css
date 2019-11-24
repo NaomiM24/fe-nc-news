@@ -68,20 +68,34 @@ a:hover {
 }
 
 .article-card li {
-  height: 400px;
+  height: 350px;
   box-sizing: border-box;
   background-color: #f3f8ff;
   padding: 0 10px;
   margin: 3%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 200px 150px 50px;
+  grid-template-rows: 200px 100px 50px;
   align-items: center;
 }
 
 .article-card li:hover {
   background-color: #8a9bc0;
   transition: 0.3s;
+  color: white;
+}
+
+.single-article {
+  box-sizing: border-box;
+  margin: 0px 20%;
+}
+
+.single-article p{
+  font-size: 1.25em;
+}
+
+.single-article h3:hover {
+  color: #dde2ed;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -90,6 +104,9 @@ a:hover {
     grid-template-columns: repeat(2, 1fr);
     margin: 0;
     padding: 0;
+  }
+  .single-article {
+    margin: 0 10%;
   }
 }
 
@@ -105,17 +122,20 @@ a:hover {
   .comment-add-box {
     width: 50%;
   }
+  .single-article {
+    margin: 0;
+  }
 }
 
 .article-card h2 {
-  /* align-content: start; */
+  align-content: start;
   background-color: #697fae;
   color: white;
   padding: 1.1em;
-  border-radius: 10px;
+  border-radius: 5px;
   grid-row: 1/2;
   grid-column: 1/4;
-  align-items: start;
+  /* align-items: start; */
 }
 
 .article-card h2 a:link {
