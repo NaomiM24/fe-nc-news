@@ -25,7 +25,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header selectedUser={this.state.selectedUser}/>
         <Topics />
         <SelectUser handleUserChange={this.handleUserChange} />
         <h2>Welcome {this.state.selectedUser}!</h2>

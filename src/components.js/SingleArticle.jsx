@@ -15,7 +15,8 @@ class SingleArticle extends Component {
     article: [],
     isLoading: true,
     error: null,
-    created_message: null
+    created_message: null,
+    posted_comment: {}
   };
   render() {
     const { isLoading, error, article } = this.state;
@@ -35,6 +36,7 @@ class SingleArticle extends Component {
 
     const AuthorLink = `/authors/${article.author}`;
     const TopicLink = `/topics/${article.topic}`;
+
     return (
       <div className="single-article">
         <main>
@@ -42,28 +44,35 @@ class SingleArticle extends Component {
           <Link to={AuthorLink}>
             <h3>by {article.author}</h3>
           </Link>
-          <Link to={TopicLink}>
-            {article.topic === "football" ? (
-              <img src={football} alt="football" />
-            ) : article.topic === "cooking" ? (
-              <img src={cooking} alt="cooking" />
-            ) : (
-              <img src={code} alt="code" />
-            )}
-          </Link>
-          <VotesChange
-            type={"articles"}
-            id={article.article_id}
-            vote={article.votes}
-          />
-          <p className="article-body">{article.body}</p>
+          <div id="votes">
+            <VotesChange
+              type={"articles"}
+              id={article.article_id}
+              vote={article.votes}
+            />
+          </div>
+          <div id="topic">
+            <Link to={TopicLink}>
+              {article.topic === "football" ? (
+                <img src={football} alt="football" />
+              ) : article.topic === "cooking" ? (
+                <img src={cooking} alt="cooking" />
+              ) : (
+                <img src={code} alt="code" />
+              )}
+            </Link>
+          </div>
         </main>
-        <h5>{article.comment_count} comments </h5>
+        <hr/>
+        <p className="article-body">{article.body}</p>
+        <hr/>
+        <h4>{article.comment_count} comments </h4>
         <section>
           <CommentAdder
             article_id={article.article_id}
             user={this.props.selectedUser}
             handleCreatedMessage={this.handleCreatedMessage}
+            handlePostedComment={this.handlePostedComment}
           />
           {this.state.created_message && (
             <p className="comment-message">{this.state.created_message}</p>
@@ -77,6 +86,7 @@ class SingleArticle extends Component {
             <Comments
               article_id={article.article_id}
               selectedUser={this.props.selectedUser}
+              posted_comment={this.state.posted_comment}
             />
           </Toggle>
         </section>
@@ -100,6 +110,10 @@ class SingleArticle extends Component {
 
   handleCreatedMessage = event => {
     this.setState({ created_message: event });
+  };
+
+  handlePostedComment = event => {
+    this.setState({ posted_comment: event });
   };
 }
 

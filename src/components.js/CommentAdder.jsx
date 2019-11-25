@@ -4,7 +4,6 @@ import * as api from "../api";
 class CommentAdder extends Component {
   state = {
     body: "",
-    postedComment: {},
     isLoading: false
   };
   render() {
@@ -19,6 +18,7 @@ class CommentAdder extends Component {
     }
     return (
       <div>
+        
         <form onSubmit={this.handleSubmit}>
           <textarea
             type="text"
@@ -46,10 +46,11 @@ class CommentAdder extends Component {
     const { body } = this.state;
     this.setState({ isLoading: true });
     api
-      .addComment(article_id, user, body)
-      .then(() => {
-        this.setState({ body: "", isLoading: false });
-        this.props.handleCreatedMessage("Comment Successfully Posted");
+    .addComment(article_id, user, body)
+    .then(({data: {comment} }) => {
+      this.setState({ body: "", isLoading: false });
+      this.props.handleCreatedMessage("Comment Successfully Posted");
+      this.props.handlePostedComment(comment)
       })
       .catch(error => {
         return this.props.handleCreatedMessage(
@@ -58,5 +59,7 @@ class CommentAdder extends Component {
       });
   };
 }
+
+// 
 
 export default CommentAdder;

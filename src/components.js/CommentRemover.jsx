@@ -44,7 +44,7 @@ class CommentRemover extends Component {
       .deleteComment(comment_id)
       .then(() => {
         this.setState({ isLoading: false });
-        this.props.handleDeletedMessage("Message Successfully Deleted");
+        this.props.handleDeletedMessage("Comment Successfully Deleted");
       })
       .catch(error => {
         return this.props.handleDeletedMessage(

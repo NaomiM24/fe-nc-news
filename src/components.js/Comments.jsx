@@ -8,8 +8,7 @@ class Comments extends Component {
     isLoading: true,
     order: null,
     sort_by: null,
-
-    deleted_message: null
+    deleted_message: null,
   };
   render() {
     if (this.state.isLoading) {
@@ -54,7 +53,6 @@ class Comments extends Component {
           )}
           <ul id="comment-list">
             {this.state.comments.map(comment => {
-              console.log(comment.comment_id)
               return (
                 <>
                   <CommentCard
@@ -83,6 +81,12 @@ class Comments extends Component {
       prevState.order !== this.state.order
     )
       this.fetchComments();
+    if (prevProps.posted_comment !== this.props.posted_comment){
+      this.setState((currentState) => {
+        return {
+          comments: [this.props.posted_comment, ...currentState.comments]}
+      })
+    }
   }
 
   fetchComments() {
@@ -115,13 +119,11 @@ class Comments extends Component {
     });
   };
 
-  handleCreatedMessage = event => {
-    this.setState({ created_message: event });
-  };
-
   handleDeletedMessage = event => {
     this.setState({ deleted_message: event });
   };
+
 }
+
 
 export default Comments;

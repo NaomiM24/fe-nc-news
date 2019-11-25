@@ -10,11 +10,15 @@ header {
   align-items: center;
 }
 
-.title {
+h1{
   color: #f3f8ff;
 }
+
 
 img {
   height: 50px;
   padding: 5px;
 }
+
+
+

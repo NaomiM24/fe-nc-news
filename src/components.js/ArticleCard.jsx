@@ -22,9 +22,12 @@ class ArticleCard extends Component {
     return (
       <div className="article-card">
         <li>
+          <Link to={ArticleLink} className="article-card-title">
           <h2>
-            <Link to={ArticleLink}>{article.title}</Link>
+            {article.title}
+            <hr/>
           </h2>
+          </Link>
           <div className="article-card-user">
             <Link to={AuthorLink}>
               <img

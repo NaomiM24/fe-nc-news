@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import VotesChange from "./VotesChange";
 import * as api from "../api";
 import CommentRemover from "./CommentRemover";
+import { Link } from "@reach/router";
 
 class CommentCard extends Component {
   state = {
@@ -19,10 +20,10 @@ class CommentCard extends Component {
         <h3 className="comment-user">
           <img src={user.avatar_url} alt="user avatar" className="avatar" />
           <br />
-          posted by: {comment.author}
+          <Link to={`/authors/${comment.author}`}>posted by {comment.author}</Link>
         </h3>
         <h4 className="comment-votes">
-          <VotesChange
+        <VotesChange
             type={"comments"}
             id={comment.comment_id}
             vote={comment.votes}

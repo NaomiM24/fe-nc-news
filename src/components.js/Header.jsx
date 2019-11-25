@@ -3,13 +3,14 @@ import { Link } from "@reach/router";
 import styles from "../css modules/Header.module.css";
 import home from "../home-icon.svg";
 
-const Header = () => {
+const Header = ({selectedUser}) => {
   return (
     <header>
       <Link to="/" className={styles.home}>
         <img src={home} alt="Home" />
       </Link>
-      <h1 className={styles.title}>northcoders news</h1>
+      <h1>northcoders news</h1>
+
     </header>
   );
 };

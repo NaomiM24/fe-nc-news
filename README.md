@@ -3,7 +3,7 @@
 ## About
 This project is a news style site with functions including:
 
-* viewing lists of articles with multiples sort options
+* viewing lists of articles with multiple sort options
 * viewing individual articles and comments
 * article/comment voting
 * selecting user interact with site
