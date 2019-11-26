@@ -39,7 +39,6 @@ class CommentRemover extends Component {
   }
   handleClick = () => {
     const { comment_id, removeComments } = this.props;
-    this.setState({ isLoading: true });
     api
       .deleteComment(comment_id)
       .then(() => {
