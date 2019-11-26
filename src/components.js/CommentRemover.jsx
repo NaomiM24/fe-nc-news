@@ -7,19 +7,9 @@ class CommentRemover extends Component {
     error: {
       status: null,
       msg: "",
-      isLoading: false
     }
   };
   render() {
-    const { isLoading } = this.state;
-    if (isLoading) {
-      return (
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
-          alt="loading..."
-        />
-      );
-    }
     const { status, msg } = this.state.error;
     return (
       <>
@@ -42,7 +32,6 @@ class CommentRemover extends Component {
     api
       .deleteComment(comment_id)
       .then(() => {
-        this.setState({ isLoading: false });
         this.props.handleDeletedMessage("comment successfully deleted");
       })
       .catch(error => {

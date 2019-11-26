@@ -8,7 +8,7 @@ class Comments extends Component {
     isLoading: true,
     order: null,
     sort_by: null,
-    deleted_message: null,
+    deleted_message: null
   };
   render() {
     if (this.state.isLoading) {
@@ -54,16 +54,14 @@ class Comments extends Component {
           <ul id="comment-list">
             {this.state.comments.map(comment => {
               return (
-                <>
-                  <CommentCard
-                    comment={comment}
-                    key={comment.comment_id}
-                    selectedUser={this.props.selectedUser}
-                    article_id={this.props.article_id}
-                    removeComments={this.removeComments}
-                    handleDeletedMessage={this.handleDeletedMessage}
-                  />
-                </>
+                <CommentCard
+                  comment={comment}
+                  key={comment.comment_id}
+                  selectedUser={this.props.selectedUser}
+                  article_id={this.props.article_id}
+                  removeComments={this.removeComments}
+                  handleDeletedMessage={this.handleDeletedMessage}
+                />
               );
             })}
           </ul>
@@ -81,11 +79,12 @@ class Comments extends Component {
       prevState.order !== this.state.order
     )
       this.fetchComments();
-    if (prevProps.posted_comment !== this.props.posted_comment){
-      this.setState((currentState) => {
+    if (prevProps.posted_comment !== this.props.posted_comment) {
+      this.setState(currentState => {
         return {
-          comments: [this.props.posted_comment, ...currentState.comments]}
-      })
+          comments: [this.props.posted_comment, ...currentState.comments]
+        };
+      });
     }
   }
 
@@ -122,8 +121,6 @@ class Comments extends Component {
   handleDeletedMessage = event => {
     this.setState({ deleted_message: event });
   };
-
 }
-
 
 export default Comments;
